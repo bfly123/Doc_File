@@ -1,0 +1,61 @@
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: Formula_samba.aux
+The style file: plain.bst
+Database file #1: ../bib_list/mybibfile.bib
+I was expecting an "="---line 4303 of file ../bib_list/mybibfile.bib
+ :   year={1992},还有其它方法，如连续界面力模型（cotinuum 
+ :                                                                        surface force model）\cite{
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 4317 of file ../bib_list/mybibfile.bib
+ :   
+ :   volume={198},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 6763 of file ../bib_list/mybibfile.bib
+ :   
+ :   school{RENSSELAER POLYTECHNIC INSTITUTE}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You've used 1 entry,
+            2118 wiz_defined-function locations,
+            502 strings with 4135 characters,
+and the built_in function-call counts, 216 in all, are:
+= -- 21
+> -- 7
+< -- 0
++ -- 3
+- -- 2
+* -- 9
+:= -- 49
+add.period$ -- 3
+call.type$ -- 1
+change.case$ -- 5
+chr.to.int$ -- 0
+cite$ -- 1
+duplicate$ -- 8
+empty$ -- 16
+format.name$ -- 2
+if$ -- 40
+int.to.chr$ -- 0
+int.to.str$ -- 1
+missing$ -- 0
+newline$ -- 8
+num.names$ -- 2
+pop$ -- 3
+preamble$ -- 1
+purify$ -- 3
+quote$ -- 0
+skip$ -- 5
+stack$ -- 0
+substring$ -- 5
+swap$ -- 0
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 4
+warning$ -- 0
+while$ -- 2
+width$ -- 2
+write$ -- 13
+(There were 3 error messages)

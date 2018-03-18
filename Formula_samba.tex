@@ -5,7 +5,7 @@
 \usepackage{xeCJK}%根据自己的需要加载宏包。
 %\setmainfont{Times New Roman}
 %\setCJKmainfont{Adobe Kaiti Std}
-\setCJKmainfont{SimSun}
+%\setCJKmainfont{SimSun}
 %\setCJKmainfont{KaiTi_GB2312}
 %\setCJKmainfont{WenQuanYi Micro Hei}
 %\setmainfont{Adobe Kaiti Std}%
@@ -113,7 +113,6 @@
 \fancyhf{}                           % 清空当前页眉页脚的默认设置
 
 
-\begin{document}
 %\newcommand{\song}{\CJKfamily{SimSun}} % 宋体
 %\newcommand{\hei}{\CJKfamily{hei}}   % 黑体
 %\newcommand{\fs}{\CJKfamily{fs}}     % 仿宋
@@ -163,7 +162,12 @@
 \graphicspath{{picture/}}
 
 
-\section{samba公式推导}
+\title{samba公式推导}
+\begin{document} 
+
+\maketitle
+
+\section{二维控制方程}
 
 运动方程：
 \begin{equation}
@@ -176,7 +180,7 @@
 \end{equation}
 
 动量守恒方程：
-\begin{equation}
+\begin{equation}\label{eq:3}
   \begin{array}{l}
 	\displaystyle \rho \frac{du}{dt}=\frac{\partial \sigma _{rr}}{\partial r}+ \frac{\partial s_{rz}}{\partial z}\\[0.3cm]
   \displaystyle \rho \frac{dv}{dt}=\frac{\partial \sigma _{zz}}{\partial z}+ \frac{\partial s_{rz}}{\partial r}\\
@@ -194,21 +198,242 @@
 本构方程：
 \begin{equation}
   \begin{array}{l}
-	\displaystyle \frac{ds_{rr}}{dt}=2\mu \left(\frac{\partial u}{\partial r}-\frac{1}{3}\Delta \cdot \vec{u} \right) +s_{rz}\left(\frac{\partial u}{\partial z}-\frac{\partial v}{\partial r}\right)\\[0.3cm]
-	\displaystyle \frac{ds_{zz}}{dt}=2\mu \left(\frac{\partial v}{\partial z}-\frac{1}{3}\Delta \cdot \vec{u} \right) -s_{rz}\left(\frac{\partial u}{\partial z}-\frac{\partial v}{\partial r}\right)\\[0.3cm]
+	\displaystyle \frac{ds_{rr}}{dt}=2\mu \left(\frac{\partial u}{\partial r}-\frac{1}{3}\nabla \cdot \vec{u} \right) +s_{rz}\left(\frac{\partial u}{\partial z}-\frac{\partial v}{\partial r}\right)\\[0.3cm]
+	\displaystyle \frac{ds_{zz}}{dt}=2\mu \left(\frac{\partial v}{\partial z}-\frac{1}{3}\nabla \cdot \vec{u} \right) -s_{rz}\left(\frac{\partial u}{\partial z}-\frac{\partial v}{\partial r}\right)\\[0.3cm]
 	\displaystyle \frac{ds_{rz}}{dt}=\mu \left(\frac{\partial u}{\partial r}+\frac{\partial v}{\partial z}\right) + \frac{s_{rr}-s_{zz}}{2}\left(\frac{\partial u}{\partial z}-\frac{\partial v}{\partial r}\right)\\
   \end{array}
   \end{equation}
 
-  时间离散：预估校正方法
+  \section{离散方法}
+  \subsection{时间离散：预估校正方法}
+  \hspace{1cm}
+  对于如下形式方程
+  \begin{equation} \label{eq:time}
+  \frac{\partial U}{\partial t}=F(U)
+\end{equation}
+预估步：
 \begin{equation}
-  \frac{\partial \bf U}{\partial t}=F(U)
+  \frac{U^{n+\frac{1}{2}}-U^n}{\frac{1}{2}\Delta t} = F(U^n)
+\end{equation}
+校正步：
+\begin{equation}
+  \frac{U^{n+1}-U^n}{\Delta t} = F(U^{n+\frac{1}{2}})
+\end{equation}
+
+\subsection{空间离散方法}
+
+\begin{figure}
+  \centering
+  \begin{tikzpicture}
+	\coordinate (A) at (2,0);
+	\coordinate (B) at (8,0.0);
+	\coordinate (C) at (8.2,6.3);
+	\coordinate (D) at (2.3,5.9);
+
+	\coordinate (O) at (20.5/4, 12.2/4);
+	\coordinate (AB) at (5, 0);
+	\coordinate (BC) at (8.1, 3.15);
+	\coordinate (CD) at (5.25, 6.1);
+	\coordinate (AD) at (2.15, 2.95);
+
+	\coordinate (AB2) at (10.125/2, 3.05/2);
+	\coordinate (BC2) at (13.225/2, 3.1);
+	\coordinate (CD2) at (10.375/2, 9.15/2);
+	\coordinate (AD2) at (7.275/2, 3.);
+
+	\coordinate (OA) at (3.56875,1.5);
+	\coordinate (OB) at (6.55625,1.55);
+	\coordinate (OC) at (6.66875,4.65);
+	\coordinate (OD) at (3.705625,4.5);
+
+
+\draw [fill=black!10!red!10] (OA)--(OB)--(OC)--(OD);
+
+\draw [line width=1pt, color=black!40] (A)--(B);
+\draw [line width=1pt, color=black!40] (B)--(C);
+\draw [line width=1pt, color=black!40] (C)--(D);
+\draw [line width=1pt, color=black!40] (D)--(A);
+
+\draw [line width=1.4pt, color=black!60] (O)--(AB);
+\draw [line width=1.4pt, color=black!60] (O)--(BC);
+\draw [line width=1.4pt, color=black!60] (O)--(CD);
+\draw [line width=1.4pt, color=black!60] (O)--(AD);
+
+\draw [line width=1.6pt, color=black!80] (OA)--(AB2)--(OB);
+\draw [line width=1.6pt, color=black!80] (OB)--(BC2)--(OC);
+\draw [line width=1.6pt, color=black!80] (OC)--(CD2)--(OD);
+\draw [line width=1.6pt, color=black!80] (OD)--(AD2)--(OA);
+
+\draw [->>,line width=1.4pt, color=black!80!blue!80] (AB2)--(BC2);
+\draw [->>,line width=1.4pt, color=black!80!blue!80] (BC2)--(CD2);
+\draw [->>,line width=1.4pt, color=black!80!blue!80] (CD2)--(AD2);
+\draw [->>,line width=1.4pt, color=black!80!blue!80] (AD2)--(AB2);
+
+\node at (10.125/2-0.2,3.05/2-0.2) { \romannumeral 1};
+\node at (6.55625+0.2,1.55-0.2) { \romannumeral 2};
+\node at (13.225/2+0.2,3.1+0.2) { \romannumeral 3};
+\node at (6.66875+0.2,4.65+0.2) { \romannumeral 4};
+\node at (10.375/2-0.2,9.15/2+0.2) { \romannumeral 5};
+\node at (3.705625-0.2,4.5+0.2) { \romannumeral 6};
+\node at (7.275/2-0.2,3+0.2) { \romannumeral 7};
+\node at (3.56875-0.2,1.5-0.2) { \romannumeral 8};
+
+\node at (20.5/4+0.2, 12.2/4+0.2) {\large O};
+\node at (5,-0.3) {\large 1};
+\node at (8.4,3.15) {\large 2};
+\node at (5.25,6.4) {\large 3};
+\node at (1.85,2.95) {\large 4};
+
+\node at (3.,1.55) {\large \uppercase\expandafter{\romannumeral 1}};
+\node at (3.,4.75) {\large \uppercase\expandafter{\romannumeral 2}};
+\node at (7.3,4.95) {\large \uppercase\expandafter{\romannumeral 3}};
+\node at (7.3,1.55) {\large \uppercase\expandafter{\romannumeral 4}};
+
+\end{tikzpicture}
+\caption{控制单元示意图}
+\label{fig:1}
+\end{figure}
+
+\subsubsection{
+运动方程离散}
+
+预估步:
+\begin{equation}
+  \frac{(r,z)^{n+\frac{1}{2}}-(r,z)^n}{\frac{1}{2}\Delta t} = (u,v)^n
+\end{equation}
+
+和Eq.(\ref{eq:time})不同，$(u,v)^{n+1/2}$不能直接由$(r,z)^{n+1/2}$求出。这里需要由动量方程求得$(u,v)^{n+1}$，然后取平均值
+\begin{equation}
+  (u,v)^{n+\frac{1}{2}}=\frac{(u,v)^{n}+(u,v)^{n+1}}{2}
+  \end{equation}
+
+校正步：
+\begin{equation}
+  \frac{(r,z)^{n+1}-(r,z)^n}{\Delta t} = (u,v)^{n+\frac{1}{2}}
+\end{equation}
+
+\subsubsection{动量方程离散}
+
+采用如图\ref{fig:1}所示非结构四边形单元，Wilkins在1963年首先通过有限体积方法得到Wilkins格式\cite{wilkins1963calculation}。点$\romannumeral 1$，$\romannumeral 3$，$\romannumeral 5$，$\romannumeral 7$分别为线O1，O2，O3，O4的中点，$\romannumeral 2$，$\romannumeral 4$，$\romannumeral 6$，$\romannumeral 8$分别为区域$\uppercase\expandafter{\romannumeral 1}$-$\uppercase\expandafter{\romannumeral 4}$的几何中心。
+
+对于动量离散方程\ref{eq:3}，在八边形面回路$\Omega =\romannumeral 1 \rightarrow \romannumeral 2 \rightarrow \cdots \rightarrow \romannumeral 7 \rightarrow \romannumeral 1$上积分：
+\begin{equation}\label{eq:31}
+	\int_\Omega \rho \frac{du}{dt} d\Omega = \int_{\Omega}  \frac{\partial \sigma _{rr}}{\partial r}+ \frac{\partial s_{rz}}{\partial z} d\Omega 
+  \end{equation}
+
+  \begin{equation}
+	\int_{\Omega} \rho \frac{dv}{dt} d\Omega =  \int_{\Omega} \frac{\partial \sigma _{zz}}{\partial z}+ \frac{\partial s_{rz}}{\partial r} d\Omega 
+  \end{equation}
+
+以方程\ref{eq:31}为例，左侧积分可以近似为
+\begin{equation}
+  \int_\Omega \rho \frac{du}{dt} d\Omega = M \frac{du_o}{dt}
+\end{equation}
+其中
+\begin{equation}
+  M=\frac{1}{4}(A_{ \uppercase\expandafter{\romannumeral 1}}\rho_{ \uppercase\expandafter{\romannumeral 1}}+A_{ \uppercase\expandafter{\romannumeral 2}}\rho_{ \uppercase\expandafter{\romannumeral 2}}+A_{ \uppercase\expandafter{\romannumeral 3}}\rho_{ \uppercase\expandafter{\romannumeral 3}}+A_{ \uppercase\expandafter{\romannumeral 4}}\rho_{ \uppercase\expandafter{\romannumeral 4}})
+\end{equation}
+
+右侧积分根据Green公式：
+\begin{equation}
+  \int_{\Omega} \text{grad} f d\Omega =\oint_{\partial \Omega } f \overrightarrow{n}dl
+\end{equation}
+有
+\begin{equation}
+  \int_{\Omega} \frac{\partial \sigma _{rr}}{\partial r}+ \frac{\partial s_{rz}}{\partial z} d\Omega =- \oint_{\partial \Omega} \sigma_{rr} dz + \oint_{\partial \Omega} s_{rz} dr
+\end{equation}
+由于线回路积分和所选回路无关，选择回路$i\rightarrow iii \rightarrow v \rightarrow vii \rightarrow i $积分，以$i \rightarrow iii $为例 由于其平行且为$\overrightarrow{12}$的一半，积分
+\begin{equation}
+  \int_{vii}^{i} \sigma _{rr} dz \approx \frac{1}{2} \sigma_{zzI} (z_2-z_1)
+\end{equation}
+同理可得
+\begin{equation}
+  -\oint_{\partial \Omega} \sigma_{rr} dz + \oint_{\partial \Omega} s_{rz} dr = \frac{1}{2} \sum_{i=1}^4 s_{rzi}(r_{i+1}-r_{i}) -\sigma_{rri}(z_{i+1}-z_i)
+\end{equation}
+
+得到wilkins格式：
+\begin{equation}
+  \frac{du_o}{dt}=\frac{1}{2M} \left[ \sum_{i=1}^4 s_{rzi}(r_{i+1}-r_{i}) -\sigma_{rri}(z_{i+1}-z_i)\right]
+\end{equation}
+
+lascauxapplication,
+该格式同样可以通过有限元方法得出(Lascaux 1973年）\ref{lascauxapplication}。控制体同样取如图\ref{fig:1}，以$I$区为例，在该区通过虚功原理，可以化作有限元的单元积分：
+\begin{equation}\label{eq:44}
+  \int_{\Omega_I}\rho \frac{du}{dt} \phi_k d\Omega = \int_{\Omega_I} \left(\frac{\partial \sigma_{rr}}{\partial r}+\frac{\partial s_{rz}}{\partial z}\right) \phi_k d\Omega
+\end{equation}
+其中
+\begin{equation}
+  \phi_i = \frac{1}{4}(1+\xi_i \xi)(1+\eta_i\eta) 
+\end{equation} 
+为基函数，$i=a,b,c,d$ 
+如图\ref{fig:2}其中 $(\xi,\eta)=(-1,-1),(1,-1),(1,1),(-1,1)$ 
+\begin{equation}
+  \begin{array}{l}
+  \displaystyle u=\sum_{i=a}^{d}u_i \phi_i\\
+  \displaystyle r=\sum_{i=a}^{d}r_i \phi_i\\
+  \displaystyle z=\sum_{i=a}^{d}z_i \phi_i\\
+\end{array}
+\end{equation}
+公式\ref{eq:44}左侧可以化为：
+\begin{equation}
+  \begin{aligned}
+  \int_{\Omega_I}\rho \frac{du}{dt} \phi_k d\Omega & = \int_{\Omega_I}\rho \sum_{i=a}^d \frac{du_i}{dt}\phi_i \phi_k dr dz\\
+  &=\sum_{i=a}^d  \frac{du_i}{dt}\int_{-1}^{1} \int_{-1}^{1}\rho \phi_i\phi_k J d\xi d\eta
+\end{aligned}
+\end{equation}
+其中
+\begin{equation}
+  J=\left\|\begin{array}{ll}
+	\frac{\partial r}{\partial \xi} & \frac{\partial r}{\partial \eta} \\
+	\frac{\partial z}{\partial \xi} & \frac{\partial z}{\partial \eta} \\
+  \end{array}
+  \right\|
+\end{equation}
+右侧以第一项为例：
+\begin{equation}
+  \begin{aligned}
+  \int_{\Omega_I} \frac{\partial \sigma_{rr}}{\partial r}+ \phi_k d\Omega=\\
+  \int_{\Omega_I}\frac{\partial (\sigma_{rr}\phi_k)}{\partial r}d\Omega-\int_{\Omega_I}\frac{\partial \phi_k}{\partial r} \sigma_{rr}d\Omega\\
+= 
+  -\int_{\partial \Omega_I}\sigma_{rr}\phi_k dz-\int_{\Omega_I}\frac{\partial \phi_k}{\partial r} \sigma_{rr}d\Omega\\
+  =-\int_{\partial \Omega_I}\sigma_{rr}\phi_k dz-\int_{\Omega_I} \frac{1}{J}\frac{\partial (z,\phi_k)}{\partial (\xi,\eta)} \sigma_{rr}Jd\xi d\eta\\
+  =-\int_{\partial \Omega_I}\sigma_{rr}\phi_k dz-\int_{-1}^1\int_{-1}^1  \frac{\partial (z,\phi_k)}{\partial (\xi,\eta)} \sigma_{rr}d\xi d\eta\\
+\end{aligned}
+\end{equation}
+
+
+
+\subsubsection{能量方程离散}
+采用有限体积方法，和动量方程离散相似，以偏导数$\frac{\partial u}{\partial r}$为例，通过Green积分可以化为：
+\begin{equation}
+  \begin{aligned}
+  \frac{\partial u}{\partial r}&=  -\frac{1}{A} \oint_{1\rightarrow 2\cdots \rightarrow 1}u dz\\
+  &\approx  -\frac{1}{A} \left(\frac{1}{2}(u_1+u_2)(z_2-z_1)+\frac{1}{2}(u_2+u_3)(z_3-z_2)+\frac{1}{2}(u_3+u_4)(z_4-z_3)+\frac{1}{2}(u_4+u_1)(u_1-u_4)\right)\\
+  &=  -\frac{1}{A} \left((u_1-u_3)(z_2-z_4)+(u_2-u_4)(z_3-z_1)\right)
+  \end{aligned}
+\end{equation}
+并将其记作$\bar{u}_{r}$。
+
+能量方程空间离散为
+\begin{equation}
+  \frac{dE}{dt}=-p^n\frac{dV}{dt}+V^n+s_rr^n\bar{u}_r^n+s_zz^n\bar{v}_z^n+s_{rz}^n(\bar{u}_z^n+\bar{v}_r^n)
+\end{equation}
+
+\subsubsection{本构方程离散}
+和能量方程离散类似，以$\frac{ds_{rr}}{dt}$为例
+\begin{equation}
+  \frac{ds_{rr}}{dt}=2\mu\left(\bar{u}_r^n - \frac{1}{3}(\bar{u}_r^n+\bar{v}_z^n)\right)+s_{rz}^n(\bar{u}_z^n-\bar{v}_r^n)
 \end{equation}
 
 
 
 
 
+
+
+
+
+\bibliography{../bib_list/mybibfile}
 
 \end{document} 
 

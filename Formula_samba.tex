@@ -356,7 +356,6 @@
   \frac{du_o}{dt}=\frac{1}{2M} \left[ \sum_{i=1}^4 s_{rzi}(r_{i+1}-r_{i}) -\sigma_{rri}(z_{i+1}-z_i)\right]
 \end{equation}
 
-lascauxapplication,
 该格式同样可以通过有限元方法得出(Lascaux 1973年）\ref{lascauxapplication}。控制体同样取如图\ref{fig:1}，以$I$区为例，在该区通过虚功原理，可以化作有限元的单元积分：
 \begin{equation}\label{eq:44}
   \int_{\Omega_I}\rho \frac{du}{dt} \phi_k d\Omega = \int_{\Omega_I} \left(\frac{\partial \sigma_{rr}}{\partial r}+\frac{\partial s_{rz}}{\partial z}\right) \phi_k d\Omega
@@ -425,6 +424,9 @@ lascauxapplication,
   \frac{ds_{rr}}{dt}=2\mu\left(\bar{u}_r^n - \frac{1}{3}(\bar{u}_r^n+\bar{v}_z^n)\right)+s_{rz}^n(\bar{u}_z^n-\bar{v}_r^n)
 \end{equation}
 
+\section{人工粘性}
+
+
 
 
 
@@ -434,6 +436,7 @@ lascauxapplication,
 
 
 \bibliography{../bib_list/mybibfile}
+
 
 \end{document} 
 

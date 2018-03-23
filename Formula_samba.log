@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2018.3.16)  19 MAR 2018 02:07
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2017.12.7)  21 MAR 2018 21:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1722,7 +1722,11 @@ Package: xeCJK-listings 2017/05/15 v3.4.8 xeCJK patch file for listings
 \l__xeCJK_listings_max_char_int=\count334
 \l__xeCJK_listings_flag_int=\count335
 )
-(./Formula_samba.aux)
+(./Formula_samba.aux
+
+LaTeX Warning: Label `fig:1' multiply defined.
+
+)
 \openout1 = `Formula_samba.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 166.
@@ -1741,8 +1745,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 166.
 LaTeX Font Info:    ... okay on input line 166.
 LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 166.
 LaTeX Font Info:    Try loading font information for T3+cmr on input line 166.
-
-(/usr/local/texlive/2017/texmf-dist/tex/latex/tipa/t3cmr.fd
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/tipa/t3cmr.fd
 File: t3cmr.fd 2001/12/31 TIPA font definitions
 )
 LaTeX Font Info:    ... okay on input line 166.
@@ -1853,49 +1856,30 @@ LaTeX Warning: No \author given.
 .................................................
 [1
 
-] [2]
-
-LaTeX Warning: Reference `lascauxapplication' on page 3 undefined on input line
- 360.
-
-
-Overfull \hbox (0.67445pt too wide) in paragraph at lines 359--361
-[]\TU/lmr/m/n/10 lascauxapplication, \TU/FandolSong-Regular(0)/m/n/10 该 格 式 同 样
- 可 以 通 过 有 限 元 方 法 得 出 \TU/lmr/m/n/10 (Las-
- []
-
-
-LaTeX Warning: Reference `fig:2' on page 3 undefined on input line 369.
-
-
-Overfull \hbox (34.04202pt too wide) in paragraph at lines 367--370
+] [2] [3]
+Overfull \hbox (3.18202pt too wide) in paragraph at lines 515--518
 \TU/FandolSong-Regular(0)/m/n/10 为 基 函 数，| $\OML/cmm/m/it/10 i \OT1/cmr/m/n/10 
-= \OML/cmm/m/it/10 a; b; c; d$ \TU/FandolSong-Regular(0)/m/n/10 如 图[]其 中 $\OT1/
-cmr/m/n/10 (\OML/cmm/m/it/10 ^^X; ^^Q\OT1/cmr/m/n/10 ) = (\OMS/cmsy/m/n/10 ^^@\
-OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 1)\OML/c
-mm/m/it/10 ; \OT1/cmr/m/n/10 (1\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 ^^@\OT1/cmr/
-m/n/10 1)\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 (1\OML/cmm/m/it/10 ; \OT1/cmr/m/n/1
-0 1)\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 1\O
-ML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1)$ 
+= \OML/cmm/m/it/10 a; b; c; d$ \TU/FandolSong-Regular(0)/m/n/10 其 中 $\OT1/cmr/m
+/n/10 (\OML/cmm/m/it/10 ^^X; ^^Q\OT1/cmr/m/n/10 ) = (\OMS/cmsy/m/n/10 ^^@\OT1/c
+mr/m/n/10 1\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 1)\OML/cmm/m/
+it/10 ; \OT1/cmr/m/n/10 (1\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/1
+0 1)\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 (1\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1)\
+OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 1\OML/cm
+m/m/it/10 ; \OT1/cmr/m/n/10 1)$ 
  []
 
-[3]
-Overfull \hbox (160.05435pt too wide) detected at line 414
-[][]
- []
+[4] [5] (./Formula_samba.bbl) [6] (./Formula_samba.aux)
 
-[4] (./Formula_samba.bbl) [5] (./Formula_samba.aux)
-
-LaTeX Warning: There were undefined references.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 42002 strings out of 493005
- 978122 string characters out of 6134596
- 1101151 words of memory out of 5000000
- 45403 multiletter control sequences out of 15000+600000
+ 42004 strings out of 493005
+ 978158 string characters out of 6134596
+ 1117620 words of memory out of 5000000
+ 45405 multiletter control sequences out of 15000+600000
  17938 words of font info for 97 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  62i,14n,96p,10463b,693s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Formula_samba.pdf (5 pages).
+Output written on Formula_samba.pdf (6 pages).

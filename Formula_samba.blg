@@ -17,45 +17,46 @@ I was expecting a `,' or a `}'---line 6763 of file ../bib_list/mybibfile.bib
  :   school{RENSSELAER POLYTECHNIC INSTITUTE}
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-You've used 1 entry,
+Warning--empty year in lascauxapplication
+You've used 2 entries,
             2118 wiz_defined-function locations,
-            502 strings with 4135 characters,
-and the built_in function-call counts, 216 in all, are:
-= -- 21
-> -- 7
+            506 strings with 4295 characters,
+and the built_in function-call counts, 413 in all, are:
+= -- 41
+> -- 14
 < -- 0
-+ -- 3
-- -- 2
-* -- 9
-:= -- 49
-add.period$ -- 3
-call.type$ -- 1
-change.case$ -- 5
++ -- 6
+- -- 4
+* -- 18
+:= -- 88
+add.period$ -- 6
+call.type$ -- 2
+change.case$ -- 10
 chr.to.int$ -- 0
-cite$ -- 1
-duplicate$ -- 8
-empty$ -- 16
-format.name$ -- 2
-if$ -- 40
+cite$ -- 3
+duplicate$ -- 16
+empty$ -- 31
+format.name$ -- 4
+if$ -- 78
 int.to.chr$ -- 0
-int.to.str$ -- 1
+int.to.str$ -- 2
 missing$ -- 0
-newline$ -- 8
-num.names$ -- 2
-pop$ -- 3
+newline$ -- 13
+num.names$ -- 4
+pop$ -- 8
 preamble$ -- 1
-purify$ -- 3
+purify$ -- 6
 quote$ -- 0
-skip$ -- 5
+skip$ -- 9
 stack$ -- 0
-substring$ -- 5
+substring$ -- 10
 swap$ -- 0
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 4
-warning$ -- 0
-while$ -- 2
-width$ -- 2
-write$ -- 13
+type$ -- 8
+warning$ -- 1
+while$ -- 4
+width$ -- 3
+write$ -- 23
 (There were 3 error messages)

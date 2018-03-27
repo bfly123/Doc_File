@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2018.3.13)  27 MAR 2018 10:00
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2018.3.13)  27 MAR 2018 16:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1804,7 +1804,7 @@ LaTeX Warning: No \author given.
 .................................................
 [1
 
-] [2] [3]
+] [2]
 Overfull \hbox (3.18202pt too wide) in paragraph at lines 379--382
 \EU1/FandolSong-Regular(0)/m/n/10 为 基 函 数，| $\OML/cmm/m/it/10 i \OT1/cmr/m/n/10
  = \OML/cmm/m/it/10 a; b; c; d$ \EU1/FandolSong-Regular(0)/m/n/10 其 中 $\OT1/cmr
@@ -1816,12 +1816,12 @@ m/it/10 ; \OT1/cmr/m/n/10 (1\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n
 cmm/m/it/10 ; \OT1/cmr/m/n/10 1)$ 
  []
 
-[4] [5]
+[3] [4]
 Overfull \hbox (28.55731pt too wide) detected at line 462
 [] []
  []
 
-[6] [7]
+[5] [6]
 Overfull \hbox (52.51001pt too wide) detected at line 609
 [] \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 ^^@\OML/cmm/m/it/10 p[] \OT1/cmr/m/n/10 +
  []\OML/cmm/m/it/10 Vs[] [][] []d\OT1/cmr/m/n/10 
@@ -1830,7 +1830,7 @@ Overfull \hbox (52.51001pt too wide) detected at line 609
 
  []
 
-[8] (./Formula_samba.bbl) [9] (./Formula_samba.aux)
+[7] (./Formula_samba.bbl [8]) [9] (./Formula_samba.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 

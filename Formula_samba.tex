@@ -303,24 +303,24 @@ Von Mises屈服条件：
 \label{fig:1}
 \end{figure}
 
-\subsubsection{
-运动方程离散}
-
-预估步:
-\begin{equation}
-  \frac{(r,z)^{n+\frac{1}{2}}-(r,z)^n}{\frac{1}{2}\Delta t} = (u,v)^n
-\end{equation}
-
-和Eq.(\ref{eq:time})不同，$(u,v)^{n+1/2}$不能直接由$(r,z)^{n+1/2}$求出。这里需要由动量方程求得$(u,v)^{n+1}$，然后取平均值
-\begin{equation}
-  (u,v)^{n+\frac{1}{2}}=\frac{(u,v)^{n}+(u,v)^{n+1}}{2}
-  \end{equation}
-
-校正步：
-\begin{equation}
-  \frac{(r,z)^{n+1}-(r,z)^n}{\Delta t} = (u,v)^{n+\frac{1}{2}}
-\end{equation}
-
+%\subsubsection{
+%运动方程离散}
+%
+%预估步:
+%\begin{equation}
+%  \frac{(r,z)^{n+\frac{1}{2}}-(r,z)^n}{\frac{1}{2}\Delta t} = (u,v)^n
+%\end{equation}
+%
+%和Eq.(\ref{eq:time})不同，$(u,v)^{n+1/2}$不能直接由$(r,z)^{n+1/2}$求出。这里需要由动量方程求得$(u,v)^{n+1}$，然后取平均值
+%\begin{equation}
+%  (u,v)^{n+\frac{1}{2}}=\frac{(u,v)^{n}+(u,v)^{n+1}}{2}
+%  \end{equation}
+%
+%校正步：
+%\begin{equation}
+%  \frac{(r,z)^{n+1}-(r,z)^n}{\Delta t} = (u,v)^{n+\frac{1}{2}}
+%\end{equation}
+%
 \subsubsection{动量方程离散}
 
 1.有限体积离散
@@ -709,10 +709,10 @@ $\sigma_{rr}=\phi_c \sigma_{rrc}=\frac{1}{4}(1+\xi)(1+\eta)\sigma_{rrO}$
   \frac{ds_{rr}}{dt}=2\mu\left(\bar{u}_r^n - \frac{1}{3}(\bar{u}_r^n+\bar{v}_z^n)\right)+s_{rz}^n(\bar{u}_z^n-\bar{v}_r^n)
 \end{equation}
 
-\bibliography{../bib_list/mybibfile}
-
 
 \section{求解流程}
+\bibliography{../bib_list/mybibfile}
+
 
 \end{document} 
 

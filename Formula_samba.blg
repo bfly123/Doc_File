@@ -3,60 +3,60 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: Formula_samba.aux
 The style file: plain.bst
 Database file #1: ../bib_list/mybibfile.bib
-I was expecting an "="---line 4303 of file ../bib_list/mybibfile.bib
+I was expecting an "="---line 4301 of file ../bib_list/mybibfile.bib
  :   year={1992},还有其它方法，如连续界面力模型（cotinuum 
  :                                                                        surface force model）\cite{
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 4317 of file ../bib_list/mybibfile.bib
+I was expecting a `,' or a `}'---line 4315 of file ../bib_list/mybibfile.bib
  :   
  :   volume={198},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 6763 of file ../bib_list/mybibfile.bib
+I was expecting a `,' or a `}'---line 6761 of file ../bib_list/mybibfile.bib
  :   
  :   school{RENSSELAER POLYTECHNIC INSTITUTE}
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for "wilkins1963calculation"
-You've used 0 entries,
+Warning--empty year in lascauxapplication
+You've used 2 entries,
             2118 wiz_defined-function locations,
-            498 strings with 4042 characters,
-and the built_in function-call counts, 18 in all, are:
-= -- 0
-> -- 0
+            506 strings with 4295 characters,
+and the built_in function-call counts, 413 in all, are:
+= -- 41
+> -- 14
 < -- 0
-+ -- 0
-- -- 0
-* -- 2
-:= -- 7
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
++ -- 6
+- -- 4
+* -- 18
+:= -- 88
+add.period$ -- 6
+call.type$ -- 2
+change.case$ -- 10
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 1
-format.name$ -- 0
-if$ -- 1
+cite$ -- 3
+duplicate$ -- 16
+empty$ -- 31
+format.name$ -- 4
+if$ -- 78
 int.to.chr$ -- 0
-int.to.str$ -- 0
+int.to.str$ -- 2
 missing$ -- 0
-newline$ -- 3
-num.names$ -- 0
-pop$ -- 0
+newline$ -- 13
+num.names$ -- 4
+pop$ -- 8
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 6
 quote$ -- 0
-skip$ -- 1
+skip$ -- 9
 stack$ -- 0
-substring$ -- 0
+substring$ -- 10
 swap$ -- 0
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
-warning$ -- 0
-while$ -- 0
-width$ -- 0
-write$ -- 2
+type$ -- 8
+warning$ -- 1
+while$ -- 4
+width$ -- 3
+write$ -- 23
 (There were 3 error messages)

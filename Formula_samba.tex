@@ -163,6 +163,7 @@
 
 
 \title{samba公式推导}
+
 \begin{document} 
 
 \maketitle
@@ -203,6 +204,11 @@
 	\displaystyle \frac{ds_{rz}}{dt}=\mu \left(\frac{\partial u}{\partial r}+\frac{\partial v}{\partial z}\right) + \frac{s_{rr}-s_{zz}}{2}\left(\frac{\partial u}{\partial z}-\frac{\partial v}{\partial r}\right)\\
   \end{array}
   \end{equation}
+
+Von Mises屈服条件：
+\begin{equation}
+  \frac{3}{2}(s_{rr}^2+s_{zz}^2+s_{\theta \theta}^2+2s_{xy}^2)\le (Y^0)^2
+\end{equation}
 
   \section{离散方法}
   \subsection{时间离散：预估校正方法}
@@ -247,27 +253,30 @@
 	\coordinate (OD) at (3.705625,4.5);
 
 
-\draw [fill=black!10!red!10] (OA)--(OB)--(OC)--(OD);
+\draw [dashed,line width=1.6pt, color=black!40] (OA)--(AB2)--(OB);
+\draw [dashed,line width=1.6pt, color=black!40] (OB)--(BC2)--(OC);
+\draw [dashed,line width=1.6pt, color=black!40] (OC)--(CD2)--(OD);
+\draw [dashed,line width=1.6pt, color=black!40] (OD)--(AD2)--(OA);
 
-\draw [line width=1pt, color=black!40] (A)--(B);
-\draw [line width=1pt, color=black!40] (B)--(C);
-\draw [line width=1pt, color=black!40] (C)--(D);
-\draw [line width=1pt, color=black!40] (D)--(A);
 
-\draw [line width=1.4pt, color=black!60] (O)--(AB);
-\draw [line width=1.4pt, color=black!60] (O)--(BC);
-\draw [line width=1.4pt, color=black!60] (O)--(CD);
-\draw [line width=1.4pt, color=black!60] (O)--(AD);
+\draw [line width=1pt, color=black!80] (A)--(B);
+\draw [line width=1pt, color=black!80] (B)--(C);
+\draw [line width=1pt, color=black!80] (C)--(D);
+\draw [line width=1pt, color=black!80] (D)--(A);
 
-\draw [line width=1.6pt, color=black!80] (OA)--(AB2)--(OB);
-\draw [line width=1.6pt, color=black!80] (OB)--(BC2)--(OC);
-\draw [line width=1.6pt, color=black!80] (OC)--(CD2)--(OD);
-\draw [line width=1.6pt, color=black!80] (OD)--(AD2)--(OA);
+%\draw [line width=1pt,dashed,fill=black!10!red!10] (OA)--(OB)--(OC)--(OD);
+\fill[fill=black!10!red!10] (OA)--(OB)--(OC)--(OD);
 
-\draw [->>,line width=1.4pt, color=black!80!blue!80] (AB2)--(BC2);
-\draw [->>,line width=1.4pt, color=black!80!blue!80] (BC2)--(CD2);
-\draw [->>,line width=1.4pt, color=black!80!blue!80] (CD2)--(AD2);
-\draw [->>,line width=1.4pt, color=black!80!blue!80] (AD2)--(AB2);
+\draw [line width=0.8pt, color=black!40] (O)--(AB);
+\draw [line width=0.8pt, color=black!40] (O)--(BC);
+\draw [line width=0.8pt, color=black!40] (O)--(CD);
+\draw [line width=0.8pt, color=black!40] (O)--(AD);
+
+
+%\draw [->>,line width=1.4pt, color=black!80!blue!80] (AB2)--(BC2);
+%\draw [->>,line width=1.4pt, color=black!80!blue!80] (BC2)--(CD2);
+%\draw [->>,line width=1.4pt, color=black!80!blue!80] (CD2)--(AD2);
+%\draw [->>,line width=1.4pt, color=black!80!blue!80] (AD2)--(AB2);
 
 \node at (10.125/2-0.2,3.05/2-0.2) { \romannumeral 1};
 \node at (6.55625+0.2,1.55-0.2) { \romannumeral 2};
@@ -284,13 +293,13 @@
 \node at (5.25,6.4) {\large 3};
 \node at (1.85,2.95) {\large 4};
 
-\node at (3.,1.55) {\large \uppercase\expandafter{\romannumeral 1}};
-\node at (3.,4.75) {\large \uppercase\expandafter{\romannumeral 2}};
-\node at (7.3,4.95) {\large \uppercase\expandafter{\romannumeral 3}};
-\node at (7.3,1.55) {\large \uppercase\expandafter{\romannumeral 4}};
+\node at (3.,1.55) {\large \uppercase\expandafter{\romannumeral 4}};
+\node at (3.,4.75) {\large \uppercase\expandafter{\romannumeral 3}};
+\node at (7.3,4.95) {\large \uppercase\expandafter{\romannumeral 2}};
+\node at (7.3,1.55) {\large \uppercase\expandafter{\romannumeral 1}};
 
 \end{tikzpicture}
-\caption{控制单元示意图}
+\caption{有限体积方法求解动量方程控制单元示意图}
 \label{fig:1}
 \end{figure}
 
@@ -313,6 +322,8 @@
 \end{equation}
 
 \subsubsection{动量方程离散}
+
+1.有限体积离散
 
 采用如图\ref{fig:1}所示非结构四边形单元，Wilkins在1963年首先通过有限体积方法得到Wilkins格式\cite{wilkins1963calculation}。点$\romannumeral 1$，$\romannumeral 3$，$\romannumeral 5$，$\romannumeral 7$分别为线O1，O2，O3，O4的中点，$\romannumeral 2$，$\romannumeral 4$，$\romannumeral 6$，$\romannumeral 8$分别为区域$\uppercase\expandafter{\romannumeral 1}$-$\uppercase\expandafter{\romannumeral 4}$的几何中心。
 
@@ -342,9 +353,9 @@
 \begin{equation}
   \int_{\Omega} \frac{\partial \sigma _{rr}}{\partial r}+ \frac{\partial s_{rz}}{\partial z} d\Omega =- \oint_{\partial \Omega} \sigma_{rr} dz + \oint_{\partial \Omega} s_{rz} dr
 \end{equation}
-由于线回路积分和所选回路无关，选择回路$i\rightarrow iii \rightarrow v \rightarrow vii \rightarrow i $积分，以$i \rightarrow iii $为例 由于其平行且为$\overrightarrow{12}$的一半，积分
+积分
 \begin{equation}
-  \int_{vii}^{i} \sigma _{rr} dz \approx \frac{1}{2} \sigma_{zzI} (z_2-z_1)
+  \int_{vii}^{i} \sigma _{rr} dz \approx \frac{1}{2} \sigma_{rrI} (z_2-z_1)
 \end{equation}
 同理可得
 \begin{equation}
@@ -352,20 +363,22 @@
 \end{equation}
 
 得到wilkins格式：
-\begin{equation}
+\begin{equation}\label{eq:34}
   \frac{du_o}{dt}=\frac{1}{2M} \left[ \sum_{i=1}^4 s_{rzi}(r_{i+1}-r_{i}) -\sigma_{rri}(z_{i+1}-z_i)\right]
 \end{equation}
 
-该格式同样可以通过有限元方法得出(Lascaux 1973年）\ref{lascauxapplication}。控制体同样取如图\ref{fig:1}，以$I$区为例，在该区通过虚功原理，可以化作有限元的单元积分：
+2:有限元离散
+
+该格式同样可以通过有限元方法得出(Lascaux 1973年）\cite{lascauxapplication}。控制体同样取如图\ref{fig:1}，以$IV$区为例，可以化作有限元的单元积分：
 \begin{equation}\label{eq:44}
-  \int_{\Omega_I}\rho \frac{du}{dt} \phi_k d\Omega = \int_{\Omega_I} \left(\frac{\partial \sigma_{rr}}{\partial r}+\frac{\partial s_{rz}}{\partial z}\right) \phi_k d\Omega
+  \int_{\Omega_IV}\rho \frac{du}{dt}  d\Omega = \int_{\Omega_IV} \left(\frac{\partial \sigma_{rr}}{\partial r}+\frac{\partial s_{rz}}{\partial z}\right) d\Omega
 \end{equation}
 其中
 \begin{equation}
   \phi_i = \frac{1}{4}(1+\xi_i \xi)(1+\eta_i\eta) 
 \end{equation} 
-为基函数，$i=a,b,c,d$ 
-如图\ref{fig:2}其中 $(\xi,\eta)=(-1,-1),(1,-1),(1,1),(-1,1)$ 
+为基函数，$i=a,b,c,d$
+其中 $(\xi,\eta)=(-1,-1),(1,-1),(1,1),(-1,1)$ 
 \begin{equation}
   \begin{array}{l}
   \displaystyle u=\sum_{i=a}^{d}u_i \phi_i\\
@@ -373,49 +386,321 @@
   \displaystyle z=\sum_{i=a}^{d}z_i \phi_i\\
 \end{array}
 \end{equation}
-公式\ref{eq:44}左侧可以化为：
-\begin{equation}
+由于求解单元中心加速度，因此$u=u_c\phi_c=u_O\phi_c$ 在$IV$区，$\phi_c=1/4(1+\xi)(1+\eta)$，因此公式\ref{eq:44}左侧可以化为：
+\begin{equation}\label{eq:32}
   \begin{aligned}
-  \int_{\Omega_I}\rho \frac{du}{dt} \phi_k d\Omega & = \int_{\Omega_I}\rho \sum_{i=a}^d \frac{du_i}{dt}\phi_i \phi_k dr dz\\
-  &=\sum_{i=a}^d  \frac{du_i}{dt}\int_{-1}^{1} \int_{-1}^{1}\rho \phi_i\phi_k J d\xi d\eta
+  \int_{\Omega_IV}\rho \frac{du}{dt} d\Omega & =   \frac{du_O}{dt} \int_{\Omega_IV}\rho  \phi_c d \Omega\\
+  &=  \frac{du_O}{dt}M 
 \end{aligned}
 \end{equation}
 其中
 \begin{equation}
-  J=\left\|\begin{array}{ll}
+  M=\int_{-1}^{1}\int_{-1}^{1}\rho  \phi_c J d \xi d\eta
+  \end{equation}
+$J$为Jacobi矩阵
+\begin{equation}
+  \begin{aligned}
+  J=&\left\|\begin{array}{ll}
 	\frac{\partial r}{\partial \xi} & \frac{\partial r}{\partial \eta} \\
 	\frac{\partial z}{\partial \xi} & \frac{\partial z}{\partial \eta} \\
   \end{array}
-  \right\|
+  \right\|\\
+  =& \frac{\partial r}{\partial \xi}\frac{\partial z}{\partial \eta}-\frac{\partial r}{\partial \eta}\frac{\partial z}{\partial \xi}\\
+  =& \frac{1}{16} \sum _{i=a}^d r_i \xi_i(1+\eta_i \eta)\sum_{i=a}^d z_i \eta_i (1+\xi_i \xi)\\
+  -& \frac{1}{16} \sum _{i=a}^d r_i \eta_i(1+\xi_i \eta)\sum_{i=a}^dz_i \xi_i (1+\eta_i \eta)\\
+  =& \frac{1}{16} [(r_2+r_3-r_1-r_4)+\eta(r_1+r_3-r_2-r_4)]\\
+  &[(z_3+z_4-z_2-z_1)+\xi(z_1+z_3-z_2-z_4)]\\
+  -& \frac{1}{16}[(z_2+z_3-z_1-z_4)+\eta(z_1+z_3-z_2-z_4)]\\
+ & [(r_3+r_4-r_2-r_1)+\xi(r_1+r_3-r_2-r_4)]\\
+  =&\frac{1}{8}[(z_1-z_3)(r_4-r_2)+(z_2-z_4)(r_1-r_3)\\
+  &+(\xi-\eta) (r_4-r_3)(z_2-z_1)+(\xi-\eta)(r_1-r_2)(z_4-z_3)]
+  \end{aligned}
 \end{equation}
+公式(\ref{eq:32})可以化为：
+\begin{equation}\label{eq:33}
+  \begin{aligned}
+ & \frac{du_O}{dt} \int_{-1}^{1}\int_{-1}^{1}\rho  \phi_c J d \xi d\eta\\
+ &= \frac{1}{32}\frac{du_O}{dt} \int_{-1}^{1}\int_{-1}^{1}\rho (1+\xi)(1+\eta)[B+C(\xi-\eta)] d\xi d\eta
+\end{aligned}
+ \end{equation}
+其中
+ $B=(z_1-z_3)(r_4-r_2)+(z_2-z_4)(r_1-r_3)$，
+  $C=(r_4-r_3)(z_2-z_1)+
+(r_1-r_2)(z_4-z_3)$
+公式 (\ref{eq:33}) 经过积分得到
+\begin{equation}
+  \begin{aligned}
+	M=&\frac{1}{8}\rho_{IV} B\\
+	=&\frac{1}{8} \rho_{IV}[(z_1-z_3)(r_4-r_2)+(z_2-z_4)(r_1-r_3)]
+	=&\frac{1}{4} \rho_{IV}A_{IV}
+	\end{aligned}
+	\end{equation}
+
+
 右侧以第一项为例：
 \begin{equation}
   \begin{aligned}
-  \int_{\Omega_I} \frac{\partial \sigma_{rr}}{\partial r}+ \phi_k d\Omega=\\
-  \int_{\Omega_I}\frac{\partial (\sigma_{rr}\phi_k)}{\partial r}d\Omega-\int_{\Omega_I}\frac{\partial \phi_k}{\partial r} \sigma_{rr}d\Omega\\
-= 
-  -\int_{\partial \Omega_I}\sigma_{rr}\phi_k dz-\int_{\Omega_I}\frac{\partial \phi_k}{\partial r} \sigma_{rr}d\Omega\\
-  =-\int_{\partial \Omega_I}\sigma_{rr}\phi_k dz-\int_{\Omega_I} \frac{1}{J}\frac{\partial (z,\phi_k)}{\partial (\xi,\eta)} \sigma_{rr}Jd\xi d\eta\\
-  =-\int_{\partial \Omega_I}\sigma_{rr}\phi_k dz-\int_{-1}^1\int_{-1}^1  \frac{\partial (z,\phi_k)}{\partial (\xi,\eta)} \sigma_{rr}d\xi d\eta\\
+  &\int_{\Omega_IV} \frac{\partial \sigma_{rr}}{\partial r} d\Omega\\
+  =&\int_{-1}^1\int_{-1}^1 \frac{1}{J}\frac{\partial (z,\sigma_{rr})}{\partial (\xi,\eta) } Jd\xi d\eta\\
+=& 
+  \int_{-1}^1\int_{-1}^1 \frac{\partial (z,\sigma_{rr})}{\partial (\xi,\eta) }d\xi d\eta\\
+  =&\int_{-1}^1\int_{-1}^1 \frac{\partial z}{\partial \xi} \frac{\partial\sigma_{rr}}{\partial \eta} - \frac{\partial z}{\partial \eta}\frac{\partial \sigma_{rr}}{\partial \xi} d\xi d\eta\\
+  =&\frac{1}{4}\int_{-1}^1\int_{-1}^1  \sum_{i=a}^d z_i \xi_i(1+\eta_i\eta)\frac{\partial\sigma_{rr}}{\partial \eta}- \sum_{i=a}^d z_i \eta_i(1+\xi_i\xi)\frac{\partial\sigma_{rr}}{\partial \xi}d\xi d\eta
+  %=&\frac{1}{4}\int_{-1}^1\int_{-1}^1  \sum_{i=a}^d z_i \xi_i\frac{\partial\sigma_{rr}(\eta+\frac{1}{2}\eta_i\eta^2)}{\partial \eta}- \sum_{i=a}^d z_i \eta_i\frac{\partial\sigma_{rr}(\xi+\frac{1}{2}\xi_i\xi^2)}{\partial \xi}d\xi d\eta
 \end{aligned}
+\end{equation}
+由于$\sigma_{rr}$求的是中心点，在$IV$区为
+$\sigma_{rr}=\phi_c \sigma_{rrc}=\frac{1}{4}(1+\xi)(1+\eta)\sigma_{rrO}$
+上式变为
+\begin{equation}
+  \begin{aligned}
+	&\frac{1}{16}\sigma_{rrO}\int_{-1}^1\int_{-1}^1  \sum_{i=a}^d z_i \xi_i(1+\eta_i\eta)(1+\xi)- \sum_{i=a}^d z_i \eta_i(1+\xi_i\xi)(1+\eta)d\xi d\eta\\
+	=&\frac{1}{4}\sigma_{rrO}(\sum_{i=a}^d z_i \xi_i-\sum_{i=a}^d z_i \eta_i)\\
+	=&\frac{1}{2}\sigma_{rrO}(z_b-z_d)\\
+	=&\frac{1}{2}\sigma_{rrO}(z_1-z_4)
+\end{aligned}
+\end{equation}
+同理$IV$区右侧右侧第二项可以化为：
+\begin{equation}
+  \int_{\Omega_{IV}} \frac{\partial s_{rz}}{\partial z} d\Omega=\frac{1}{2}s_{rzO}(r_4-r_1)
 \end{equation}
 
 
-
-\subsubsection{能量方程离散}
-采用有限体积方法，和动量方程离散相似，以偏导数$\frac{\partial u}{\partial r}$为例，通过Green积分可以化为：
+在第$I$区，$O$点为第$d$节点，因此$\phi_d=1/4(1-\xi)(1+\eta)$ 其他求解过程和$IV$区相同，最后右侧积分变为：
 \begin{equation}
   \begin{aligned}
-  \frac{\partial u}{\partial r}&=  -\frac{1}{A} \oint_{1\rightarrow 2\cdots \rightarrow 1}u dz\\
-  &\approx  -\frac{1}{A} \left(\frac{1}{2}(u_1+u_2)(z_2-z_1)+\frac{1}{2}(u_2+u_3)(z_3-z_2)+\frac{1}{2}(u_3+u_4)(z_4-z_3)+\frac{1}{2}(u_4+u_1)(u_1-u_4)\right)\\
-  &=  -\frac{1}{A} \left((u_1-u_3)(z_2-z_4)+(u_2-u_4)(z_3-z_1)\right)
+  &\int_{\Omega_{I}}\frac{\partial \sigma_{rr}}{\partial r}+ \frac{\partial s_{rz}}{\partial z} d\Omega=\frac{1}{2}s_{rzO}(r_4-r_1)\\
+  =&\frac{1}{2}\sigma_{rrO}(z_a-z_c)+\frac{1}{2}s_{rzO}(z_c-z_a)\\
+  =&\frac{1}{2}\sigma_{rrO}(z_1-z_2)+\frac{1}{2}s_{rzO}(z_2-z_1)
+  \end{aligned}
+  \end{equation}
+
+  将$I$-$IV$区左右项加和可得：
+  \begin{equation}
+  \frac{du_o}{dt}=\frac{1}{2M} \left[ \sum_{i=1}^4 s_{rzO}(r_{i+1}-r_{i}) -\sigma_{rrO}(z_{i+1}-z_i)\right]
+  \end{equation}
+  其中
+\begin{equation}
+  M=\frac{1}{4}(A_{ \uppercase\expandafter{\romannumeral 1}}\rho_{ \uppercase\expandafter{\romannumeral 1}}+A_{ \uppercase\expandafter{\romannumeral 2}}\rho_{ \uppercase\expandafter{\romannumeral 2}}+A_{ \uppercase\expandafter{\romannumeral 3}}\rho_{ \uppercase\expandafter{\romannumeral 3}}+A_{ \uppercase\expandafter{\romannumeral 4}}\rho_{ \uppercase\expandafter{\romannumeral 4}})
+\end{equation}
+和有限体积方法求得的公式(\ref{eq:34})相同。
+\begin{figure}
+  \centering
+  \begin{tikzpicture}
+	\coordinate (A) at (2,0);
+	\coordinate (B) at (8,0.0);
+	\coordinate (C) at (8.2,6.3);
+	\coordinate (D) at (2.3,5.9);
+
+	\coordinate (O) at (20.5/4, 12.2/4);
+	\coordinate (AB) at (5, 0);
+	\coordinate (BC) at (8.1, 3.15);
+	\coordinate (CD) at (5.25, 6.1);
+	\coordinate (AD) at (2.15, 2.95);
+%
+\draw [fill=black!10!red!10] (A)--(AB)--(O)--(AD);
+
+\draw [line width=1pt, color=black!40] (A)--(B);
+\draw [line width=1pt, color=black!40] (B)--(C);
+\draw [line width=1pt, color=black!40] (C)--(D);
+\draw [line width=1pt, color=black!40] (D)--(A);
+
+\draw [line width=1.4pt, color=black!60] (O)--(AB);
+\draw [line width=1.4pt, color=black!60] (O)--(BC);
+\draw [line width=1.4pt, color=black!60] (O)--(CD);
+\draw [line width=1.4pt, color=black!60] (O)--(AD);
+
+%\draw [line width=1.6pt, color=black!80] (OA)--(AB2)--(OB);
+%\draw [line width=1.6pt, color=black!80] (OB)--(BC2)--(OC);
+%\draw [line width=1.6pt, color=black!80] (OC)--(CD2)--(OD);
+%\draw [line width=1.6pt, color=black!80] (OD)--(AD2)--(OA);
+%
+%\draw [->>,line width=1.4pt, color=black!80!blue!80] (AB2)--(BC2);
+%\draw [->>,line width=1.4pt, color=black!80!blue!80] (BC2)--(CD2);
+%\draw [->>,line width=1.4pt, color=black!80!blue!80] (CD2)--(AD2);
+%\draw [->>,line width=1.4pt, color=black!80!blue!80] (AD2)--(AB2);
+%
+%\node at (10.125/2-0.2,3.05/2-0.2) { \romannumeral 1};
+%\node at (6.55625+0.2,1.55-0.2) { \romannumeral 2};
+%\node at (13.225/2+0.2,3.1+0.2) { \romannumeral 3};
+%\node at (6.66875+0.2,4.65+0.2) { \romannumeral 4};
+%\node at (10.375/2-0.2,9.15/2+0.2) { \romannumeral 5};
+%\node at (3.705625-0.2,4.5+0.2) { \romannumeral 6};
+%\node at (7.275/2-0.2,3+0.2) { \romannumeral 7};
+%\node at (3.56875-0.2,1.5-0.2) { \romannumeral 8};
+%
+\node at (20.5/4+0.2, 12.2/4+0.2) {\large O};
+\node at (20.5/4-0.2, 12.2/4-0.2) {c};
+\node at (20.5/4-0.2+2.7, 12.2/4-0.2) {c};
+\node at (5,-0.3) {\large 1 };
+\node at (4.6,0.3)  {\scriptsize b};
+\node at (7.6,0.3)  {\scriptsize b};
+\node at (2.4,0.3) {a};
+\node at (5.4,0.3) {a};
+\node at (8.4,3.15) {\large 2};
+\node at (5.25,6.4) {\large 3};
+\node at (1.85,2.95) {\large 4 };
+\node at (2.4,2.65) {\scriptsize d};
+\node at (5.4,2.8) {\scriptsize d};
+
+\node at (3.,1.55) {\large \uppercase\expandafter{\romannumeral 4}};
+\node at (3.,4.75) {\large \uppercase\expandafter{\romannumeral 3}};
+\node at (7.3,4.95) {\large \uppercase\expandafter{\romannumeral 2}};
+\node at (7.3,1.55) {\large \uppercase\expandafter{\romannumeral 1}};
+
+\end{tikzpicture}
+\caption{有限元求解动量方程控制单元示意图}
+\label{fig:1}
+\end{figure}
+
+
+\subsubsection{能量方程离散}
+能量守恒方程：
+\begin{equation}\label{eq:35}
+  \begin{aligned}
+	&\displaystyle \rho \frac{de}{dt}= \bm{\sigma} \cdot \bm{\varepsilon}\\ 
+	&=
+	\sigma _{rr}\frac{\partial u}{\partial r}+\sigma_{zz}\frac{\partial v}{\partial z}+\sigma_{rz}\left( \frac{\partial u}{\partial z}+\frac{\partial v}{\partial r}\right)\\
+& = -p \nabla \cdot \overrightarrow{u}+ s_{rr}\frac{\partial u}{\partial r}+s_{zz}\frac{\partial v}{\partial z}+s_{rz}\left( \frac{\partial u}{\partial z}+\frac{\partial v}{\partial r}\right)
+	\end{aligned}
+	\end{equation}
+
+	通过质量守恒方程：
+	\begin{equation}
+	  \frac{\partial \rho}{\partial t}+\nabla\cdot (\rho \overrightarrow{u})=0
+	\end{equation}
+	有
+	\begin{equation}
+	  \frac{\partial \rho}{\partial t}+\overrightarrow{u} \cdot \nabla \rho + \rho  \nabla \cdot \overrightarrow{u}=0
+	\end{equation}
+	根据全微分关系
+	\begin{equation}
+	  \frac{d \rho}{d t}+ \rho  \nabla \cdot \overrightarrow{u}=0
+	\end{equation}
+	所以
+	\begin{equation}
+	  \begin{aligned}
+	  \nabla\cdot \overrightarrow{u}& =-\frac{1}{\rho}\frac{d\rho}{dt}\\
+	  &=-V\frac{d\frac{1}{V}}{dt}\\
+	  &=\frac{1}{V}\frac{dV}{dt}
+	  \end{aligned}
+	  \end{equation}
+	  所以方程(\ref{eq:35}) 可以化为
+\begin{equation}
+\rho \frac{de}{dt}
+	= -\frac{p}{V}\frac{dV}{dt}+ s_{rr}\frac{\partial u}{\partial r}+s_{zz}\frac{\partial v}{\partial z}+s_{rz}\left( \frac{\partial u}{\partial z}+\frac{\partial v}{\partial r}\right)
+ \end{equation}
+ 既
+\begin{equation}
+\frac{de}{dt}
+	= -p\frac{dV}{dt}+Vs_{rr}\frac{\partial u}{\partial r}+Vs_{zz}\frac{\partial v}{\partial z}+Vs_{rz}\left( \frac{\partial u}{\partial z}+V\frac{\partial v}{\partial r}\right)
+ \end{equation}
+	其中$\bm {\sigma}=-p\bm{I}+\bm{s}$。
+
+	采用有限体积方法，在图\ref{fig:4} 所示整个单元上进行积分有，其中除速度外其它量均集中在单元中心$O$，因此有：
+\begin{equation}
+  \int_{\Omega}\frac{de}{dt} d\Omega
+  =\int_{\Omega} -p\frac{dV}{dt}+ V s_{rr}\frac{\partial u}{\partial r}+V s_{zz}\frac{\partial v}{\partial z}+ V s_{rz}\left( \frac{\partial u}{\partial z}+ \frac{\partial v}{\partial r}\right)d \Omega
+ \end{equation}
+ 既
+\begin{equation}
+ \frac{de}{dt} 
+ =-p\frac{dV}{dt}+ \frac{1}{A} V s_{rr}\int_{\Omega}\frac{\partial u}{\partial r} d\Omega+V s_{zz} \frac{1}{A}\int_{\Omega}\frac{\partial v}{\partial z}d\Omega + V s_{rz}  \frac{1}{A}\int_{\Omega}\left( \frac{\partial u}{\partial z}+\frac{\partial v}{\partial r}\right)d \Omega
+ \end{equation}
+ 以其中
+ \begin{equation}
+   \frac{1}{A}\int_{\Omega} \frac{\partial u}{\partial r} d\Omega
+\end{equation}
+的离散为例：
+\begin{equation}
+  \begin{aligned}
+	\frac{1}{A}\int_{\Omega}  \frac{\partial u}{\partial r} d\Omega&=  -\frac{1}{A}\oint_{\partial \omega}u dz\\
+	& \approx \frac{1}{A} (\frac{1}{2}(u_1+u_2)(z_2-z_1)+\frac{1}{2}(u_2+u_3)(z_3-z_2)\\
+  & +(u_3+u_4)(z_4-z_3)+\frac{1}{2}(u_4+u_1)(u_1-u_4))\\
+  &= -\frac{1}{A} \left((u_1-u_3)(z_2-z_4)+(u_2-u_4)(z_3-z_1)\right)
   \end{aligned}
 \end{equation}
 并将其记作$\bar{u}_{r}$。
 
+\begin{figure}
+  \centering
+  \begin{tikzpicture}
+	\coordinate (A) at (2,0);
+	\coordinate (B) at (8,0.0);
+	\coordinate (C) at (8.2,6.3);
+	\coordinate (D) at (2.3,5.9);
+
+	\coordinate (O) at (20.5/4, 12.2/4);
+	\coordinate (AB) at (5, 0);
+	\coordinate (BC) at (8.1, 3.15);
+	\coordinate (CD) at (5.25, 6.1);
+	\coordinate (AD) at (2.15, 2.95);
+%
+%	\coordinate (AB2) at (10.125/2, 3.05/2);
+%	\coordinate (BC2) at (13.225/2, 3.1);
+%	\coordinate (CD2) at (10.375/2, 9.15/2);
+%	\coordinate (AD2) at (7.275/2, 3.);
+%
+%	\coordinate (OA) at (3.56875,1.5);
+%	\coordinate (OB) at (6.55625,1.55);
+%	\coordinate (OC) at (6.66875,4.65);
+%	\coordinate (OD) at (3.705625,4.5);
+%
+
+%\draw [fill=black!10!red!10] (OA)--(OB)--(OC)--(OD);
+
+\draw [line width=1pt, color=black!40] (A)--(B);
+\draw [line width=1pt, color=black!40] (B)--(C);
+\draw [line width=1pt, color=black!40] (C)--(D);
+\draw [line width=1pt, color=black!40] (D)--(A);
+
+\draw [line width=1.4pt, color=black!60] (O)--(AB);
+\draw [line width=1.4pt, color=black!60] (O)--(BC);
+\draw [line width=1.4pt, color=black!60] (O)--(CD);
+\draw [line width=1.4pt, color=black!60] (O)--(AD);
+%
+%\draw [line width=1.6pt, color=black!80] (OA)--(AB2)--(OB);
+%\draw [line width=1.6pt, color=black!80] (OB)--(BC2)--(OC);
+%\draw [line width=1.6pt, color=black!80] (OC)--(CD2)--(OD);
+%\draw [line width=1.6pt, color=black!80] (OD)--(AD2)--(OA);
+%
+%\draw [->>,line width=1.4pt, color=black!80!blue!80] (AB)--(BC);
+%\draw [->>,line width=1.4pt, color=black!80!blue!80] (BC)--(CD);
+%\draw [->>,line width=1.4pt, color=black!80!blue!80] (CD)--(AD);
+%\draw [->>,line width=1.4pt, color=black!80!blue!80] (AD)--(AB);
+
+%\node at (10.125/2-0.2,3.05/2-0.2) { \romannumeral 1};
+%\node at (6.55625+0.2,1.55-0.2) { \romannumeral 2};
+%\node at (13.225/2+0.2,3.1+0.2) { \romannumeral 3};
+%\node at (6.66875+0.2,4.65+0.2) { \romannumeral 4};
+%\node at (10.375/2-0.2,9.15/2+0.2) { \romannumeral 5};
+%\node at (3.705625-0.2,4.5+0.2) { \romannumeral 6};
+%\node at (7.275/2-0.2,3+0.2) { \romannumeral 7};
+%\node at (3.56875-0.2,1.5-0.2) { \romannumeral 8};
+%
+\node at (20.5/4+0.2, 12.2/4+0.2) {\large O};
+\node at (5,-0.3) {\large 1};
+\node at (8.4,3.15) {\large 2};
+\node at (5.25,6.4) {\large 3};
+\node at (1.85,2.95) {\large 4};
+
+%\node at (3.,1.55) {\large \uppercase\expandafter{\romannumeral 1}};
+%\node at (3.,4.75) {\large \uppercase\expandafter{\romannumeral 2}};
+%\node at (7.3,4.95) {\large \uppercase\expandafter{\romannumeral 3}};
+%\node at (7.3,1.55) {\large \uppercase\expandafter{\romannumeral 4}};
+%
+\end{tikzpicture}
+\caption{能量方程离散控制单元示意图}
+\label{fig:4}
+\end{figure}
+
 能量方程空间离散为
 \begin{equation}
-  \frac{dE}{dt}=-p^n\frac{dV}{dt}+V^n+s_rr^n\bar{u}_r^n+s_zz^n\bar{v}_z^n+s_{rz}^n(\bar{u}_z^n+\bar{v}_r^n)
+  \frac{de}{dt}=-p\frac{dV}{dt}+ V \bm{s}\cdot \bm{\varepsilon}
+  \end{equation}
+其中
+  \begin{equation}
+	\bm{s}\cdot \bm{\varepsilon}=s_{rr}\bar{u}_r+s_{zz}\bar{v}_z+s_{rz}(\bar{u}_z+\bar{v}_r)
 \end{equation}
 
 \subsubsection{本构方程离散}
@@ -424,19 +709,11 @@
   \frac{ds_{rr}}{dt}=2\mu\left(\bar{u}_r^n - \frac{1}{3}(\bar{u}_r^n+\bar{v}_z^n)\right)+s_{rz}^n(\bar{u}_z^n-\bar{v}_r^n)
 \end{equation}
 
-\section{人工粘性}
-
-
-
-
-
-
-
-
-
-
 \bibliography{../bib_list/mybibfile}
 
 
+\section{求解流程}
+
 \end{document} 
+
 

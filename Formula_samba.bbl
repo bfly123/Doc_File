@@ -1,3 +1,14 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
+
+\bibitem{lascauxapplication}
+P~Lascaux.
+\newblock Application of the finite elements method in two-dimensional
+  hydrodynamics using the lagrange variables.
+\newblock Technical report, CEA Centre d'Etudes de Limeil.
+
+\bibitem{wilkins1963calculation}
+Mark~L Wilkins.
+\newblock Calculation of elastic-plastic flow.
+\newblock Technical report, California Univ Livermore Radiation Lab, 1963.
 
 \end{thebibliography}

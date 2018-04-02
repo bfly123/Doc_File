@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2018.3.13)  28 MAR 2018 21:44
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2018.3.13)  2 APR 2018 20:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1966,18 +1966,8 @@ File: se-ascii-print.def 2011/12/02 v1.10 stringenc: Printable ASCII characters
 )
 [1
 
-]
-
-LaTeX Warning: Citation `wilkins1963calculation' on page 2 undefined on input l
-ine 334.
-
-[2]
-
-LaTeX Warning: Citation `lascauxapplication' on page 3 undefined on input line 
-378.
-
-
-Overfull \hbox (3.18202pt too wide) in paragraph at lines 385--388
+] [2] [3] [4]
+Overfull \hbox (3.18202pt too wide) in paragraph at lines 456--459
 \EU1/FandolSong-Regular(0)/m/n/10 为 基 函 数，| $\OML/cmm/m/it/10 i \OT1/cmr/m/n/10
  = \OML/cmm/m/it/10 a; b; c; d$ \EU1/FandolSong-Regular(0)/m/n/10 其 中 $\OT1/cmr
 /m/n/10 (\OML/cmm/m/it/10 ^^X; ^^Q\OT1/cmr/m/n/10 ) = (\OMS/cmsy/m/n/10 ^^@\OT1
@@ -1988,13 +1978,18 @@ m/it/10 ; \OT1/cmr/m/n/10 (1\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n
 cmm/m/it/10 ; \OT1/cmr/m/n/10 1)$
  []
 
-[3] [4]
-Overfull \hbox (28.55731pt too wide) detected at line 468
+[5]
+Overfull \hbox (5.91592pt too wide) detected at line 529
 [] []
  []
 
-[5] [6]
-Overfull \hbox (55.81206pt too wide) detected at line 620
+[6]
+Overfull \hbox (34.48169pt too wide) detected at line 538
+[] []
+ []
+
+[7] [8]
+Overfull \hbox (55.81206pt too wide) detected at line 690
 [] \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 ^^@\OML/cmm/m/it/10 p[] \OT1/cmr/m/n/10 +
  []\OML/cmm/m/it/10 Vs[] [][] []d\OT1/cmr/m/n/10 
  + \OML/cmm/m/it/10 Vs[][] [][] []d\OT1/cmr/m/n/10 
@@ -2002,40 +1997,35 @@ Overfull \hbox (55.81206pt too wide) detected at line 620
 
  []
 
-[7]
-Overfull \hbox (133.93408pt too wide) in paragraph at lines 806--807
+[9]
+Overfull \hbox (133.93408pt too wide) in paragraph at lines 876--877
  [][] 
  []
 
-[8] [9]
-Overfull \hbox (70.20586pt too wide) detected at line 871
+[10] [11]
+Overfull \hbox (70.20586pt too wide) detected at line 941
 \OML/cmm/m/it/10 F[] \OT1/cmr/m/n/10 = [] []
  []
 
-[10]
-No file Formula_samba.bbl.
-[11]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 932.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 932.
+[12] [13] (./Formula_samba.bbl) [14]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1048.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1048.
  (./Formula_samba.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 932.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 932.
-
-
-LaTeX Warning: There were undefined references.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1048.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1048.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 932.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1048.
  ) 
 Here is how much of TeX's memory you used:
- 47916 strings out of 495252
- 1052763 string characters out of 6180858
- 1169493 words of memory out of 5000000
- 50557 multiletter control sequences out of 15000+600000
+ 47920 strings out of 495252
+ 1052814 string characters out of 6180858
+ 1170337 words of memory out of 5000000
+ 50559 multiletter control sequences out of 15000+600000
  18314 words of font info for 100 fonts, out of 8000000 for 9000
  264 hyphenation exceptions out of 8191
  62i,19n,87p,10463b,731s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Formula_samba.pdf (11 pages).
+Output written on Formula_samba.pdf (14 pages).

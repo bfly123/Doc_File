@@ -1031,9 +1031,22 @@ $J$为Jacobi矩阵
   \end{aligned}
 \end{equation}
 可以得到
-\begin{equation}
+\begin{equation}\label{eq:41}
   \nabla \phi \cdot d\bm{r} = d\phi
   \end{equation}
+该公式和所用坐标系无关。
+  同样，在曲线坐标系下，
+  \begin{equation}
+	\begin{aligned}
+	d\phi =&\frac{\partial \phi}{\partial \xi_\alpha} d\xi_\alpha +\frac{\partial \phi}{\partial \xi_\beta} d\xi_\beta+\frac{\partial \phi}{\partial \xi_\gamma} d\xi_\gamma\\
+	d\bm{r}=&\frac{\partial \bm{r}}{\partial \xi_\alpha} d\xi_\alpha +\frac{\partial \bm{r}}{\partial \xi_\beta} d\xi_\beta+\frac{\partial \bm{r}}{\partial \xi_\gamma} d\xi_\gamma\\
+	=&h_\alpha d\xi_\alpha \bm{e}_\alpha + h_\beta d\xi_\beta \bm{e}_\beta+ h_\gamma d\xi_\gamma \bm{e}_\gamma
+	\end{aligned}
+	\end{equation}
+	其中$\bm{e}_\nu$是沿着坐标曲线的单位矢量。 采用待定系数法，令$\nabla f= \lambda_\alpha \bm{e}_\alpha + \lambda_\beta \bm{e}_\beta+ \lambda_\gamma \bm{e}_\gamma$ 代入公式(\ref{eq:41}) 有
+\begin{equation}
+  \begin{aligned}
+ d\phi =\frac{\partial \phi}{\partial \xi_\alpha} d\xi_\alpha +\frac{\partial \phi}{\partial \xi_\beta} d\xi_\beta+\frac{\partial \phi}{\partial \xi_\gamma} d\xi_\gamma
 
 
 

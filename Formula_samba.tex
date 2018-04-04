@@ -1020,6 +1020,7 @@ $J$为Jacobi矩阵
   \frac{\partial \bm{r}}{\partial \xi_\nu}=\frac{\partial \bm{r}}{\partial \xi_\nu}\frac{ds_\nu}{d \xi_\nu} = h_\nu \bm{e}_\nu
   \end{equation}
   \subsection{梯度公式}
+  在笛卡尔坐标系中有
 \begin{equation}
   \nabla \phi = \frac{\partial \phi}{\partial x} \bm{i} + \frac{\partial \phi}{\partial y} \bm{j} +\frac{\partial \phi}{\partial z} \bm{k}
 \end{equation}
@@ -1036,7 +1037,7 @@ $J$为Jacobi矩阵
   \end{equation}
 该公式和所用坐标系无关。
   同样，在曲线坐标系下，
-  \begin{equation}
+  \begin{equation}\label{eq:45}
 	\begin{aligned}
 	d\phi =&\frac{\partial \phi}{\partial \xi_\alpha} d\xi_\alpha +\frac{\partial \phi}{\partial \xi_\beta} d\xi_\beta+\frac{\partial \phi}{\partial \xi_\gamma} d\xi_\gamma\\
 	d\bm{r}=&\frac{\partial \bm{r}}{\partial \xi_\alpha} d\xi_\alpha +\frac{\partial \bm{r}}{\partial \xi_\beta} d\xi_\beta+\frac{\partial \bm{r}}{\partial \xi_\gamma} d\xi_\gamma\\
@@ -1046,7 +1047,112 @@ $J$为Jacobi矩阵
 	其中$\bm{e}_\nu$是沿着坐标曲线的单位矢量。 采用待定系数法，令$\nabla f= \lambda_\alpha \bm{e}_\alpha + \lambda_\beta \bm{e}_\beta+ \lambda_\gamma \bm{e}_\gamma$ 代入公式(\ref{eq:41}) 有
 \begin{equation}
   \begin{aligned}
- d\phi =\frac{\partial \phi}{\partial \xi_\alpha} d\xi_\alpha +\frac{\partial \phi}{\partial \xi_\beta} d\xi_\beta+\frac{\partial \phi}{\partial \xi_\gamma} d\xi_\gamma
+ d\phi =&\frac{\partial \phi}{\partial \xi_\alpha} d\xi_\alpha +\frac{\partial \phi}{\partial \xi_\beta} d\xi_\beta+\frac{\partial \phi}{\partial \xi_\gamma} d\xi_\gamma\\
+ =& (\lambda_\alpha \bm{e}_\alpha + \lambda_\beta \bm{e}_\beta+ \lambda_\gamma \bm{e}_\gamma)\cdot (
+h_\alpha d\xi_\alpha \bm{e}_\alpha + h_\beta d\xi_\beta \bm{e}_\beta+ h_\gamma d\xi_\gamma \bm{e}_\gamma)\\
+ =& \lambda_\alpha  h _\alpha d \xi_\alpha+ \lambda_\beta  h_\beta  d\xi_\beta+ \lambda_\gamma  h_\gamma d\xi_\gamma
+ \end{aligned}
+ \end{equation}
+ 根据公式 (\ref{eq:45}) 有
+ \begin{equation}
+   \begin{array}{lll}
+\displaystyle 	 \lambda_\alpha =\frac{1}{h_\alpha}\frac{\partial \phi}{\partial \xi_\alpha},&
+	 \displaystyle \lambda_\beta =\frac{1}{h_\beta}\frac{\partial \phi}{\partial \xi_\beta},&
+	 \displaystyle \lambda_\gamma =\frac{1}{h_\gamma}\frac{\partial \phi}{\partial \xi_\gamma}
+	 \end{array}
+	 \end{equation}
+
+	 \subsection{一般曲线坐标系下散度公式}
+	 \subsubsection{单位矢量的旋度}
+单位矢量的旋度
+\begin{equation}
+  \nabla \xi_\nu =(\frac{1}{h_\alpha}\frac{\partial }{\partial \xi_\alpha}\bm{e}_\alpha+\frac{1}{h_\beta}\frac{\partial }{\partial \xi_\beta}\bm{e}_\beta+\frac{1}{h_\gamma}\frac{\partial }{\partial \xi_\gamma} \bm{e}_\gamma)\xi_\nu =\frac{1}{h_\nu} \bm{e}_\nu
+  \end{equation}
+  因此有
+\begin{equation}
+  \nabla \times \left(\frac{1}{h_\nu}\bm{e}_\nu\right) = \nabla \times \nabla \xi_\nu = 0
+  \end{equation}
+  即矢量$\frac{1}{h_\nu}\bm{e}_\nu$有零旋度。
+
+	 \subsubsection{单位矢量的散度}
+	 由于三个单位矢量$\bm{e}_\nu$两两相交，有$\bm{e}_\alpha = \bm{e}_\beta \times \bm{e}_\gamma$，因此
+\begin{equation}
+  \frac{1}{h_\beta h_\gamma} \bm{e}_\alpha     = \left(\frac{1}{h_\beta} \bm{e}_\beta\right)\times \left(\frac{1}{h_\gamma}\bm{e}_\gamma\right) = \nabla \xi_\beta \times \nabla \xi_\gamma
+  \end{equation}
+  有
+  \begin{equation}
+	\nabla \cdot \frac{1}{h_\beta h_\gamma} \bm{e}_\alpha = \nabla \cdot (\nabla \xi_\beta \times \nabla \xi_\gamma) = \nabla \xi_\beta \cdot (\nabla \times \nabla \xi_\gamma) - \nabla \xi_\gamma \cdot (\nabla \times \nabla \xi_\beta) =0
+	\end{equation}
+	因此矢量$\frac{1}{ h_\beta h_\gamma}\bm{e}_\alpha$的散度为零。
+
+	\subsection{曲线坐标系下的散度公式}
+	令$\bm{F} =F_\alpha \bm{e}_\alpha +F_\beta \bm{e}_\beta +F_\gamma \bm{e}_\gamma$
+	则$\nabla \cdot \bm{F} = \nabla \cdot  (F_\alpha \bm{e}_\alpha)+\nabla \cdot (F_\beta \bm{e}_\beta) +\nabla \cdot (F_\gamma \bm{e}_\gamma)$
+
+	对于上式第一项
+	\begin{equation} 
+	  \nabla \cdot (F _\alpha \bm{e}_\alpha)= \nabla \cdot \left(h_\beta h_\gamma F_\alpha \frac{\bm{e}_\alpha}{h_\beta h_\gamma}\right) = \frac{\bm{e} _\alpha}{h_\beta h_\gamma} \cdot \nabla (h_\beta h_\gamma F_\alpha) + h_\beta h_\gamma F_\alpha \nabla \cdot \frac{\bm{e}_\alpha}{h_\beta h_\gamma}
+	\end{equation}
+	由于$\frac{\bm{e}_\alpha }{h_\beta h_\gamma}$有零散度
+
+\begin{equation}
+  \begin{aligned}
+	  \nabla \cdot (F _\alpha \bm{e}_\alpha)= & \frac{\bm{e} _\alpha}{h_\beta h_\gamma} \cdot \nabla (h_\beta h_\gamma F_\alpha)\\
+	  =&  \frac{\bm{e}_\alpha}{h_\beta h_\gamma} \cdot \left( \frac{1}{h_\alpha} \frac{\partial}{\partial \xi_\alpha}\bm{e}_\alpha + \frac{1}{h_\beta} \frac{\partial}{\partial \xi_\beta}\bm{e}_\beta +\frac{1}{h_\gamma} \frac{\partial}{\partial \xi_\gamma}\bm{e}_\gamma \right) h_\beta h_\gamma F_\alpha \\
+	  =& \frac{1}{h_\alpha h_\beta h_\gamma}\frac{\partial h_\beta h_\gamma F_\alpha}{\partial \xi_\alpha}
+	\end{aligned}
+	\end{equation}
+同理可得
+\begin{equation}
+ \nabla \cdot (F _\beta \bm{e}_\beta)=
+	   \frac{1}{h_\alpha h_\beta h_\gamma}\frac{\partial h_\alpha h_\gamma F_\beta}{\partial \xi_\beta}
+	   \end{equation}
+\begin{equation}
+ \nabla \cdot (F _\gamma \bm{e}_\gamma)=
+	   \frac{1}{h_\alpha h_\beta h_\gamma}\frac{\partial h_\alpha h_\beta F_\gamma}{\partial \xi_\gamma}
+	   \end{equation}
+	   因此可得散度表达式
+\begin{equation}
+  \nabla \cdot \bm{F} =\frac{1}{h_\alpha h_\beta h_\gamma} \left( \frac{\partial h_\beta h_\gamma F_\alpha}{\partial \xi_\alpha}+ \frac{\partial h_\alpha h_\gamma F_\beta}{\partial \xi_\beta}+ \frac{\partial h_\alpha h_\beta F_\gamma}{\partial \xi_\gamma}
+	 \right)
+	  \end{equation}
+	  \subsection{旋度公式}
+	令$\bm{F} =F_\alpha \bm{e}_\alpha +F_\beta \bm{e}_\beta +F_\gamma \bm{e}_\gamma$
+	则$\nabla \times \bm{F} = \nabla \times  (F_\alpha \bm{e}_\alpha)+\nabla \times (F_\beta \bm{e}_\beta) +\nabla \times (F_\gamma \bm{e}_\gamma)$
+	右端第一项
+	\begin{equation}
+	  \begin{aligned}
+	\nabla \times (F_\alpha \bm{e}_\alpha) =& \nabla (h_\alpha F_\alpha) \times \frac{\bm{e}_\alpha}{h_\alpha}+F_\alpha h_\alpha \nabla \times \frac{\bm{e}_\alpha}{h_\alpha} \\
+	=& \left(\frac{1}{h_\alpha} \frac{\partial}{\partial \xi_\alpha} \bm{e}_\alpha +
+	\frac{1}{h_\beta} \frac{\partial}{\partial \xi_\beta} \bm{e}_\beta+\frac{1}{h_\gamma} \frac{\partial}{\partial \xi_\gamma} \bm{e}_\gamma\right) h_\alpha F_\alpha \times \frac{1}{h_\alpha}\bm{e}_\alpha +0 \\
+	=& \frac{1}{h_\alpha h_\beta} \frac{\partial h_\alpha F_\alpha }{\partial \xi_\beta} (-\bm{e}_\gamma) +\frac{1}{h_\alpha h_\gamma}\frac{\partial  h_\alpha F_\alpha}{\partial \xi_\gamma}(\bm{e}_\beta)\\
+	=& \frac{1}{h_\alpha h_\beta  h_\gamma} \left[\frac{\partial  h_\alpha F_\alpha}{\partial \xi_\gamma}( h_\beta \bm{e}_\beta)- \frac{\partial h_\alpha F_\alpha }{\partial \xi_\beta}  (h_\gamma \bm{e}_\gamma) \right]
+	\end{aligned}
+	\end{equation}
+	同理可得 
+	\begin{equation}
+	  \begin{aligned}
+	  &\nabla \times (F_\beta \bm{e}_\beta) = \frac{1}{h_\alpha h_\beta h_\gamma}\left[ \frac{\partial h_\beta F_\beta}{\partial \xi_\alpha}(h_\gamma \bm{e}_\gamma)- \frac{\partial h_\beta F_\beta}{\partial \xi_\gamma}(h_\alpha \bm{e}_\alpha)\right]\\
+	  &\nabla \times (F_\gamma \bm{e}_\gamma) = \frac{1}{h_\alpha h_\beta h_\gamma}\left[ \frac{\partial h_\gamma F_\gamma}{\partial \xi_\beta}(h_\alpha \bm{e}_\alpha)- \frac{\partial h_\gamma F_\gamma}{\partial \xi_\alpha}(h_\beta \bm{e}_\beta)\right]\\
+	  \end{aligned}
+	  \end{equation}
+可以写成简化形式
+	  \begin{equation}
+		\nabla \times \bm{F} =\frac{1}{h_\alpha h_\beta h_\gamma} 
+ \left| 
+ \begin{array}{lll}
+   h_\alpha \bm{e}_\alpha & h_\beta \bm{e}_\beta & h_\gamma \bm{e}_\gamma\\
+   \frac{\partial}{\partial \xi_\alpha}& \frac{\partial}{\partial \xi_\beta}& \frac{\partial}{\partial \xi_\gamma}\\
+   h_\alpha F_\alpha & h_\beta F_\beta & h_\gamma F_\gamma\\
+   \end{array}
+ \right|
+ \end{equation}
+
+
+
+
+
+
 
 
 

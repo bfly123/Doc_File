@@ -9,3 +9,8 @@
 \BOOKMARK [1][-]{section.4}{求解流程}{}% 9
 \BOOKMARK [2][-]{subsection.4.1}{Lame系数}{section.4}% 10
 \BOOKMARK [2][-]{subsection.4.2}{梯度公式}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.3}{一般曲线坐标系下散度公式}{section.4}% 12
+\BOOKMARK [3][-]{subsubsection.4.3.1}{单位矢量的旋度}{subsection.4.3}% 13
+\BOOKMARK [3][-]{subsubsection.4.3.2}{单位矢量的散度}{subsection.4.3}% 14
+\BOOKMARK [2][-]{subsection.4.4}{曲线坐标系下的散度公式}{section.4}% 15
+\BOOKMARK [2][-]{subsection.4.5}{旋度公式}{section.4}% 16
